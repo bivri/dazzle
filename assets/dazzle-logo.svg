@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 220" width="100%" height="220" role="img" aria-label="Dazzle — Protective Patterns Against Style Mimicry">
+  <defs>
+    <linearGradient id="bgCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#131E36"/>
+    </linearGradient>
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="iceAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+
+    <!-- Dazzle Camouflage Facet Clip Paths (Centered around Emblem 125, 110) -->
+    <!-- Facet 1: Upper-Left Prow -->
+    <clipPath id="facetUL">
+      <polygon points="125,26 52,66 52,118 125,110"/>
+    </clipPath>
+    <!-- Facet 2: Upper-Right Wing -->
+    <clipPath id="facetUR">
+      <polygon points="125,26 198,66 198,116 125,110"/>
+    </clipPath>
+    <!-- Facet 3: Lower-Left Hull -->
+    <clipPath id="facetLL">
+      <polygon points="52,118 125,110 125,194 52,154"/>
+    </clipPath>
+    <!-- Facet 4: Lower-Right Counter-Wedge -->
+    <clipPath id="facetLR">
+      <polygon points="125,110 198,116 198,154 125,194"/>
+    </clipPath>
+    <!-- Facet 5: Center Intersecting Diamond (Optical Disruption Core) -->
+    <clipPath id="facetCore">
+      <polygon points="125,64 166,110 125,156 84,110"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer Card Container (Ensures High Contrast in Both Light & Dark GitHub Themes) -->
+  <rect x="4" y="4" width="812" height="212" rx="22" fill="url(#bgCard)" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Subtle Background Geometric Grid Lines -->
+  <g stroke="#1E293B" stroke-width="1" opacity="0.55">
+    <line x1="248" y1="20" x2="248" y2="200"/>
+    <line x1="20" y1="110" x2="232" y2="110" stroke-dasharray="4 6"/>
+    <line x1="125" y1="14" x2="125" y2="206" stroke-dasharray="4 6"/>
+  </g>
+
+  <!-- ==================== DAZZLE CAMOUFLAGE EMBLEM ==================== -->
+  <!-- Outer Shield Shadow / Glow -->
+  <polygon points="125,20 204,63 204,157 125,200 46,157 46,63" fill="#050811" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.45"/>
+
+  <!-- Facet 1 (Upper-Left): -32 deg High-Contrast Navy / White / Cyan Stripes -->
+  <g clip-path="url(#facetUL)">
+    <rect x="20" y="10" width="140" height="140" fill="#0B132B"/>
+    <g transform="translate(90,75) rotate(-32)">
+      <rect x="-90" y="-80" width="180" height="11" fill="#F8FAFC"/>
+      <rect x="-90" y="-56" width="180" height="11" fill="#38BDF8"/>
+      <rect x="-90" y="-32" width="180" height="11" fill="#F8FAFC"/>
+      <rect x="-90" y="-8"  width="180" height="11" fill="#F8FAFC"/>
+      <rect x="-90" y="16"  width="180" height="11" fill="#38BDF8"/>
+      <rect x="-90" y="40"  width="180" height="11" fill="#F8FAFC"/>
+      <rect x="-90" y="64"  width="180" height="11" fill="#F8FAFC"/>
+    </g>
+  </g>
+
+  <!-- Facet 2 (Upper-Right): +42 deg Opposing Pitch Stripes -->
+  <g clip-path="url(#facetUR)">
+    <rect x="115" y="10" width="110" height="130" fill="#111C38"/>
+    <g transform="translate(160,75) rotate(42)">
+      <rect x="-90" y="-80" width="180" height="10" fill="#38BDF8"/>
+      <rect x="-90" y="-58" width="180" height="10" fill="#F8FAFC"/>
+      <rect x="-90" y="-36" width="180" height="10" fill="#F8FAFC"/>
+      <rect x="-90" y="-14" width="180" height="10" fill="#0284C7"/>
+      <rect x="-90" y="8"   width="180" height="10" fill="#F8FAFC"/>
+      <rect x="-90" y="30"  width="180" height="10" fill="#38BDF8"/>
+      <rect x="-90" y="52"  width="180" height="10" fill="#F8FAFC"/>
+    </g>
+  </g>
+
+  <!-- Facet 3 (Lower-Left): +18 deg Shallow Horizon Disruption Stripes -->
+  <g clip-path="url(#facetLL)">
+    <rect x="30" y="100" width="110" height="110" fill="#0F172A"/>
+    <g transform="translate(90,150) rotate(18)">
+      <rect x="-90" y="-70" width="180" height="12" fill="#F8FAFC"/>
+      <rect x="-90" y="-44" width="180" height="12" fill="#0284C7"/>
+      <rect x="-90" y="-18" width="180" height="12" fill="#F8FAFC"/>
+      <rect x="-90" y="8"   width="180" height="12" fill="#38BDF8"/>
+      <rect x="-90" y="34"  width="180" height="12" fill="#F8FAFC"/>
+      <rect x="-90" y="60"  width="180" height="12" fill="#0284C7"/>
+    </g>
+  </g>
+
+  <!-- Facet 4 (Lower-Right): -52 deg Steep Counter-Slant Stripes -->
+  <g clip-path="url(#facetLR)">
+    <rect x="115" y="100" width="110" height="110" fill="#090D16"/>
+    <g transform="translate(160,150) rotate(-52)">
+      <rect x="-90" y="-75" width="180" height="10" fill="#F8FAFC"/>
+      <rect x="-90" y="-53" width="180" height="10" fill="#F8FAFC"/>
+      <rect x="-90" y="-31" width="180" height="10" fill="#38BDF8"/>
+      <rect x="-90" y="-9"  width="180" height="10" fill="#F8FAFC"/>
+      <rect x="-90" y="13"  width="180" height="10" fill="#0284C7"/>
+      <rect x="-90" y="35"  width="180" height="10" fill="#F8FAFC"/>
+      <rect x="-90" y="57"  width="180" height="10" fill="#38BDF8"/>
+    </g>
+  </g>
+
+  <!-- Facet 5 (Center Diamond): Horizontal High-Frequency Phase-Inverted Core -->
+  <g clip-path="url(#facetCore)">
+    <rect x="75" y="55" width="100" height="110" fill="#090D16"/>
+    <g transform="translate(125,110) rotate(-8)">
+      <rect x="-60" y="-52" width="120" height="8" fill="#38BDF8"/>
+      <rect x="-60" y="-36" width="120" height="8" fill="#F8FAFC"/>
+      <rect x="-60" y="-20" width="120" height="8" fill="#38BDF8"/>
+      <rect x="-60" y="-4"  width="120" height="8" fill="#F8FAFC"/>
+      <rect x="-60" y="12"  width="120" height="8" fill="#0284C7"/>
+      <rect x="-60" y="28"  width="120" height="8" fill="#F8FAFC"/>
+      <rect x="-60" y="44"  width="120" height="8" fill="#38BDF8"/>
+    </g>
+  </g>
+
+  <!-- Crisp Facet Seam Outlines -->
+  <polygon points="125,26 198,66 198,154 125,194 52,154 52,66" fill="none" stroke="#F8FAFC" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="125,64 166,110 125,156 84,110" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="125" y1="26" x2="125" y2="64" stroke="#38BDF8" stroke-width="2"/>
+  <line x1="125" y1="156" x2="125" y2="194" stroke="#38BDF8" stroke-width="2"/>
+  <line x1="52" y1="118" x2="84" y2="110" stroke="#38BDF8" stroke-width="2"/>
+  <line x1="166" y1="110" x2="198" y2="116" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- ==================== GEOMETRIC VECTOR WORDMARK: DAZZLE ==================== -->
+  <g transform="translate(278, 46)">
+    <!-- D -->
+    <path d="M0,0 H42 C66,0 80,15 80,41 C80,67 66,82 42,82 H0 Z M20,17 V65 H40 C53,65 60,56 60,41 C60,26 53,17 40,17 Z" fill="url(#iceAccent)"/>
+    <!-- A (with Dazzle diagonal crossbar cut) -->
+    <path d="M122,0 L144,0 L176,82 L154,82 L147,63 L115,63 L108,82 L86,82 Z M133,21 L121,47 L142,47 Z" fill="url(#iceAccent)"/>
+    <!-- Z1 (with cyan dazzle stripe accent flush with diagonal stem) -->
+    <path d="M184,0 H252 V15 L209,65 H253 V82 H182 V67 L225,17 H184 Z" fill="url(#iceAccent)"/>
+    <polygon points="198.3,48 225,17 250.3,17 223.6,48" fill="#38BDF8"/>
+    <!-- Z2 (with cyan dazzle stripe accent flush with diagonal stem) -->
+    <path d="M266,0 H334 V15 L291,65 H335 V82 H264 V67 L307,17 H266 Z" fill="url(#iceAccent)"/>
+    <polygon points="280.3,48 307,17 332.3,17 305.6,48" fill="#0284C7"/>
+    <!-- L -->
+    <path d="M350,0 H370 V65 H412 V82 H350 Z" fill="url(#iceAccent)"/>
+    <!-- E (with angled middle bar) -->
+    <path d="M424,0 H490 V17 H444 V33 H484 L478,49 H444 V65 H492 V82 H424 Z" fill="url(#iceAccent)"/>
+  </g>
+
+  <!-- Accent Divider Bar with Dazzle Ticks -->
+  <g transform="translate(278, 144)">
+    <rect x="0" y="0" width="370" height="3" fill="url(#cyanAccent)" rx="1.5"/>
+    <polygon points="380,0 392,0 388,3 376,3" fill="#38BDF8"/>
+    <polygon points="398,0 410,0 406,3 394,3" fill="#F8FAFC"/>
+    <polygon points="416,0 428,0 424,3 412,3" fill="#0284C7"/>
+  </g>
+
+  <!-- Subtitle Text -->
+  <text x="278" y="174" fill="#94A3B8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" letter-spacing="2.8">
+    PROTECTIVE PATTERNS AGAINST STYLE MIMICRY
+  </text>
+</svg>

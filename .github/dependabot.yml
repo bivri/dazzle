@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: uv
+    directory: /
+    schedule:
+      interval: weekly
+    # torch/diffusers bumps change generator outputs; they need GPU evidence (docs/agents/testing.md).
+    ignore:
+      - dependency-name: torch
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: diffusers
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]

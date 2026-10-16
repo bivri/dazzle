@@ -1,0 +1,13 @@
+Dazzle
+Copyright 2026 © LSware
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Generator weights published from this repository were trained with the SDXL VAE
+"madebyollin/sdxl-vae-fp16-fix" (MIT License) as a fixed, offline objective. The
+weights do not contain or reproduce that model.
+
+The evaluation harness downloads, but does not redistribute, third-party models:
+CSD-ViT-L (tomg-group-umd/CSD-ViT-L, CC-BY-4.0) for style similarity, LPIPS (BSD-2-Clause)
+for perceptual distance, and an SDXL checkpoint plus kohya-ss/sd-scripts (Apache-2.0)
+for mimicry LoRA training. Their licenses apply to their use.

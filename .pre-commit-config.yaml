@@ -1,0 +1,23 @@
+# Works with `pre-commit` or `prek`: `uvx prek install` once per clone (CONTRIBUTING.md).
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.10
+    hooks:
+      - id: ruff-check
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-added-large-files
+        args: ["--maxkb=500"]
+  - repo: local
+    hooks:
+      - id: dazzle-policy
+        name: dazzle policy (single-head generator, vocabulary)
+        entry: python scripts/check_policy.py
+        language: system
+        types_or: [python, markdown, yaml, toml, shell]

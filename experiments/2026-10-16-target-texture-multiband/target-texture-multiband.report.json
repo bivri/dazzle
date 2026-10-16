@@ -1,0 +1,69 @@
+{
+  "manifest": {
+    "code": "0.1.0+unknown",
+    "args": {
+      "run_id": "target-texture-multiband",
+      "generator": null,
+      "revision": null,
+      "epsilon_levels": null,
+      "filters": [],
+      "import_set": [
+        "multiband=$DAZZLE_WORKSPACE/runs/target-texture-multiband/sets/multiband",
+        "multiband+vae=$DAZZLE_WORKSPACE/runs/target-texture-multiband/sets/multiband+vae"
+      ],
+      "styles": [
+        "s1",
+        "s4"
+      ],
+      "proxy_only": false,
+      "seed": 42
+    },
+    "workspace": "$DAZZLE_WORKSPACE"
+  },
+  "quality": {
+    "multiband": {
+      "lpips": 0.027262190461624414,
+      "psnr": 31.904744346936543
+    },
+    "multiband+vae": {
+      "lpips": 0.05144035859654347,
+      "psnr": 28.357815543810528
+    }
+  },
+  "proxy": {
+    "multiband": {
+      "s1": 0.006946269926878745,
+      "s4": -0.018534307805719408
+    },
+    "multiband+vae": {
+      "s1": -0.02337751710903513,
+      "s4": -0.03280500049255286
+    }
+  },
+  "effect_ratio": {
+    "multiband": {
+      "s1": [
+        0.28094547410842513,
+        0.19742792853609895,
+        0.3550043838669886
+      ],
+      "s4": [
+        -0.14119699311966302,
+        -0.2282342489292241,
+        -0.06001420430000481
+      ]
+    },
+    "multiband+vae": {
+      "s1": [
+        0.15079439017018956,
+        0.07681054787579042,
+        0.2239652260407791
+      ],
+      "s4": [
+        -0.16119943548625845,
+        -0.24216988625335198,
+        -0.0818869291741011
+      ]
+    }
+  }
+}

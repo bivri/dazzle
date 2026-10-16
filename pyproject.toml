@@ -1,0 +1,61 @@
+[project]
+name = "bivri-dazzle"
+dynamic = ["version"]
+description = "Protective patterns that reduce unauthorized style mimicry by LoRA fine-tuning"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "LSware" }]
+keywords = ["image-protection", "style-mimicry", "diffusion", "lora", "pytorch"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = [
+    "torch>=2.4",
+    "numpy>=1.26",
+    "pillow>=10.0",
+    "huggingface-hub>=0.30",
+    "safetensors>=0.4",
+]
+
+[project.optional-dependencies]
+# Offline generator training against the SDXL VAE objective.
+train = ["diffusers>=0.35", "lpips>=0.1.4"]
+# Evaluation harness: transformation filters, LoRA renders, CSD scoring. The mimicry LoRA itself is
+# trained by a kohya-ss/sd-scripts checkout with its own requirements (docs/evaluation.md).
+eval = ["diffusers>=0.35", "transformers>=4.49", "accelerate>=1.0", "lpips>=0.1.4"]
+onnx = ["onnx>=1.16"]
+
+[project.scripts]
+dazzle = "dazzle.cli:main"
+
+[project.urls]
+Repository = "https://github.com/bivri/dazzle"
+Model = "https://huggingface.co/bivri/dazzle-generator"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.16"]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/dazzle/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dazzle"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--strict-markers", "--tb=short"]
+markers = ["gpu: needs a CUDA GPU and model downloads; not run in CI"]

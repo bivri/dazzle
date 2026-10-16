@@ -1,0 +1,26 @@
+{
+  "code": "0.1.0+unknown",
+  "args": {
+    "run_id": "target-texture-multiband",
+    "name": "multiband",
+    "styles": [
+      "s2",
+      "s3"
+    ],
+    "steps": 48,
+    "hf_levels": 26.0,
+    "mid_levels": 23.0,
+    "lf_levels": 20.0,
+    "warp_px": 2.2,
+    "tone_levels": 22.0,
+    "lpips_cap": 0.065,
+    "cap": 36.0,
+    "only_image": "00.png,02.png,03.png"
+  },
+  "sdxl_vae": [
+    "madebyollin/sdxl-vae-fp16-fix",
+    "207b116dae70ace3637169f1ddd2434b91b3a8cd"
+  ],
+  "torch": "2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 5090"
+}

@@ -1,0 +1,38 @@
+# Python / tooling
+__pycache__/
+*.egg-info/
+.venv/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# Weights, images and run outputs live in $DAZZLE_WORKSPACE, never in git.
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+*.onnx
+*.png
+*.jpg
+*.jpeg
+*.webp
+!assets/**
+data/
+models/
+out/
+runs/
+eval/
+sd-scripts/
+
+# Worktrees made before experiments moved to Herdr (docs/agents/experiments.md) and local agent state
+.worktrees/
+.claude/
+.omp/
+
+# Internal planning and legal-review material: not part of the public repository
+docs/internal/
+
+.env
+.env.*
