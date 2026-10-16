@@ -100,8 +100,10 @@ Protection effectiveness is measured by **`E/F`** (`effect_ratio` in [CSD](https
 
 | Evaluation Condition | Style | PSNR (dB) | LPIPS | Style Gain Removed (`E/F` [95% CI]) |
 | --- | --- | :---: | :---: | :---: |
-| **Dazzle Multi-Band Target-Texture** | Flat Cel Anime (`s1`) | 31.90 | 0.027 | **+0.281 [+0.197, +0.355]** |
-| **Dazzle + SDXL VAE Round-Trip Filter** | Flat Cel Anime (`s1`) | 28.36 | 0.051 | **+0.151 [+0.077, +0.224]** |
+| **Dazzle Multi-Band Target-Texture (48-Step)** | Flat Cel Anime (`s1`) | 31.90 | 0.027 | **+0.281 [+0.197, +0.355]** |
+| **Dazzle + SDXL VAE Round-Trip Filter (48-Step)** | Flat Cel Anime (`s1`) | 28.36 | 0.051 | **+0.151 [+0.077, +0.224]** |
+| **Single-Pass `DazzleGenerator` + SDXL VAE Filter** | Flat Cel Anime (`s1`) | 28.77 | 0.081 | **+0.142 [+0.063, +0.210]** |
+| **Single-Pass `DazzleGenerator` (Unfiltered)** | Flat Cel Anime (`s1`) | 30.66 | 0.066 | **+0.110 [+0.039, +0.175]** |
 | **Decoy-Latent Baseline** | Flat Cel Anime (`s1`) | 31.85 | 0.108 | +0.138 [+0.084, +0.192] |
 
 | Visual Fidelity Probe Across Styles (`00.png` / `03.png`) | Max Bound ($L_\infty$) | PSNR (dB) | LPIPS |

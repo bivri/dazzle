@@ -28,15 +28,18 @@ def cmd_protect(args) -> None:
 
 def cmd_export_onnx(args) -> None:
     gen = _load(args).cpu()
+    h = torch.export.Dim("height", min=1) * 8
+    w = torch.export.Dim("width", min=1) * 8
     torch.onnx.export(
         gen,
-        torch.zeros(1, 3, 512, 512),
+        (torch.zeros(1, 3, 512, 512),),
         str(args.out),
         input_names=["image"],
         output_names=["delta"],
-        dynamic_axes={"image": {2: "height", 3: "width"}, "delta": {2: "height", 3: "width"}},
-        opset_version=17,
-        dynamo=False,
+        dynamic_shapes={"x": {2: h, 3: w}},
+        opset_version=18,
+        dynamo=True,
+        external_data=False,
     )
     print(args.out)
 

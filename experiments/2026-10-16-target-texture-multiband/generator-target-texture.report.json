@@ -1,0 +1,68 @@
+{
+  "manifest": {
+    "code": "0.1.0+73cb8a73537efaf4e9e1893967d9834713809501",
+    "args": {
+      "run_id": "generator-target-texture",
+      "generator": "$DAZZLE_WORKSPACE/models/dazzle-generator",
+      "revision": null,
+      "epsilon_levels": null,
+      "filters": [
+        "vae"
+      ],
+      "import_set": [],
+      "styles": [
+        "s1",
+        "s4"
+      ],
+      "proxy_only": false,
+      "seed": 42
+    },
+    "workspace": "$DAZZLE_WORKSPACE"
+  },
+  "quality": {
+    "protected": {
+      "lpips": 0.0660120486592253,
+      "psnr": 30.65535322825114
+    },
+    "protected+vae": {
+      "lpips": 0.08098233478764692,
+      "psnr": 28.77176547050476
+    }
+  },
+  "proxy": {
+    "protected": {
+      "s1": 0.057372411491078856,
+      "s4": 0.062038762355611454
+    },
+    "protected+vae": {
+      "s1": 0.02885456894404792,
+      "s4": -0.0015643992024860776
+    }
+  },
+  "effect_ratio": {
+    "protected": {
+      "s1": [
+        0.11024863071112506,
+        0.03921636873157184,
+        0.17476756893881495
+      ],
+      "s4": [
+        -0.21445764704834971,
+        -0.31631878458916246,
+        -0.12669416872276643
+      ]
+    },
+    "protected+vae": {
+      "s1": [
+        0.1416059912752711,
+        0.06311640416054433,
+        0.2102245612740093
+      ],
+      "s4": [
+        -0.267723754968028,
+        -0.3707580397624164,
+        -0.17747990046828074
+      ]
+    }
+  }
+}

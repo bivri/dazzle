@@ -40,13 +40,17 @@ Adopt into `src/dazzle/` if:
 
 ## Results
 
-End-to-end mimicry LoRA evaluation (`target-texture-multiband.report.json`):
+End-to-end mimicry LoRA evaluation (`target-texture-multiband.report.json` and
+`generator-target-texture.report.json`):
 
 | Condition | Style | Run id | PSNR (dB) | LPIPS | E/F mean [95% CI] |
 | --- | --- | --- | --- | --- | --- |
-| Multi-band target-texture protected | s1 (flat cel anime) | `target-texture-multiband` | 31.90 | 0.0273 | **+0.281 [+0.197, +0.355]** |
-| Multi-band target-texture + SDXL VAE round trip | s1 (flat cel anime) | `target-texture-multiband` | 28.36 | 0.0514 | **+0.151 [+0.077, +0.224]** |
-| Multi-band target-texture protected | s4 (painterly) | `target-texture-multiband` | 31.90 | 0.0273 | −0.141 [−0.228, −0.060] |
+| Multi-band target-texture protected (48-step per-image) | s1 (flat cel anime) | `target-texture-multiband` | 31.90 | 0.0273 | **+0.281 [+0.197, +0.355]** |
+| Multi-band target-texture + SDXL VAE round trip (48-step) | s1 (flat cel anime) | `target-texture-multiband` | 28.36 | 0.0514 | **+0.151 [+0.077, +0.224]** |
+| Single-pass `DazzleGenerator` (50 epochs) | s1 (flat cel anime) | `generator-target-texture` | 30.66 | 0.0660 | **+0.110 [+0.039, +0.175]** |
+| Single-pass `DazzleGenerator` + SDXL VAE round trip | s1 (flat cel anime) | `generator-target-texture` | 28.77 | 0.0810 | **+0.142 [+0.063, +0.210]** |
+| Multi-band target-texture protected (48-step per-image) | s4 (painterly) | `target-texture-multiband` | 31.90 | 0.0273 | −0.141 [−0.228, −0.060] |
+| Single-pass `DazzleGenerator` (50 epochs) | s4 (painterly) | `generator-target-texture` | 30.66 | 0.0660 | −0.214 [−0.316, −0.127] |
 
 Refined multi-band visual quality verification across all four illustration styles (`00.png`
 portrait and `03.png` street scene):

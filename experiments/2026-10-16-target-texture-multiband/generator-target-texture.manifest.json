@@ -1,0 +1,20 @@
+{
+  "code": "0.1.0+73cb8a73537efaf4e9e1893967d9834713809501",
+  "args": {
+    "run_id": "generator-target-texture",
+    "generator": "$DAZZLE_WORKSPACE/models/dazzle-generator",
+    "revision": null,
+    "epsilon_levels": null,
+    "filters": [
+      "vae"
+    ],
+    "import_set": [],
+    "styles": [
+      "s1",
+      "s4"
+    ],
+    "proxy_only": false,
+    "seed": 42
+  },
+  "workspace": "$DAZZLE_WORKSPACE"
+}
