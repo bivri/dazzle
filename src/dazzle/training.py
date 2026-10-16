@@ -228,18 +228,25 @@ def multi_band_hinge_loss(
 
 
 class StyleImages(Dataset):
-    """Training illustrations resized to a square training size."""
+    """Training illustrations resized once to a square training size and cached in memory."""
 
     def __init__(self, ws: Workspace, styles: tuple[str, ...], size: int):
         self.size = size
         self.files = [f for s in styles for f in ws.train_images(s)]
+        self.images = [
+            torch.from_numpy(
+                np.asarray(Image.open(f).convert("RGB").resize((size, size), Image.Resampling.LANCZOS), np.float32)
+                / 127.5
+                - 1.0
+            ).permute(2, 0, 1)
+            for f in self.files
+        ]
 
     def __len__(self) -> int:
-        return len(self.files)
+        return len(self.images)
 
     def __getitem__(self, i: int) -> torch.Tensor:
-        im = Image.open(self.files[i]).convert("RGB").resize((self.size, self.size), Image.LANCZOS)
-        return torch.from_numpy(np.asarray(im, np.float32) / 127.5 - 1.0).permute(2, 0, 1)
+        return self.images[i]
 
 
 def jpeg_like_blur(x: torch.Tensor, quality: float = 85.0) -> torch.Tensor:
@@ -261,9 +268,13 @@ def train(cfg: TrainConfig, ws: Workspace, out: Path, device: str) -> DazzleGene
     from diffusers import AutoencoderKL
 
     torch.manual_seed(cfg.seed)
+    use_cuda = device.startswith("cuda")
+    if use_cuda:
+        torch.set_float32_matmul_precision("high")
+        torch.backends.cudnn.benchmark = True
     eps = levels_to_epsilon(cfg.epsilon_levels)
     gen = DazzleGenerator(base_ch=32, default_epsilon=eps).to(device)
-    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float32).to(device).eval()
+    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", dtype=torch.float32).to(device).eval()
     lp = lpips.LPIPS(net="alex", verbose=False).to(device).eval()
     vae.requires_grad_(False)
     lp.requires_grad_(False)
@@ -276,7 +287,7 @@ def train(cfg: TrainConfig, ws: Workspace, out: Path, device: str) -> DazzleGene
         z_struct_single = encode(tex_struct)
 
     data = StyleImages(ws, STYLES, cfg.img_size)
-    loader = DataLoader(data, batch_size=cfg.batch_size, shuffle=True, drop_last=True)
+    loader = DataLoader(data, batch_size=cfg.batch_size, shuffle=True, drop_last=True, pin_memory=use_cuda)
     opt = torch.optim.AdamW(gen.parameters(), lr=cfg.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=cfg.epochs)
     print(f"config={asdict(cfg)} images={len(data)}", flush=True)
@@ -285,7 +296,7 @@ def train(cfg: TrainConfig, ws: Workspace, out: Path, device: str) -> DazzleGene
         gen.train()
         sums = np.zeros(3)
         for x in loader:
-            x = x.to(device)
+            x = x.to(device, non_blocking=use_cuda)
             delta = gen(x, eps)
             xp = (x + delta).clamp(-1, 1)
             if torch.rand(()) > 0.5:
@@ -317,7 +328,7 @@ def train(cfg: TrainConfig, ws: Workspace, out: Path, device: str) -> DazzleGene
                 + 8.0 * hinge_mb
                 + 0.8 * total_variation(delta)
             )
-            opt.zero_grad()
+            opt.zero_grad(set_to_none=True)
             loss.backward()
             opt.step()
             sums += [loss.item(), latent_ratio.item(), perc.item()]

@@ -4,8 +4,8 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-0284C7.svg" alt="License: Apache-2.0"></a>
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11%2B-38BDF8.svg" alt="Python 3.11+"></a>
-  <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.4%2B-EE4C2C.svg" alt="PyTorch 2.4+"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.14%2B-38BDF8.svg" alt="Python 3.14+"></a>
+  <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.11%2B-EE4C2C.svg" alt="PyTorch 2.11+"></a>
   <a href="https://huggingface.co/bivri/dazzle-generator"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-dazzle--generator-FACC15.svg" alt="Hugging Face Hub"></a>
 </p>
 
@@ -48,7 +48,7 @@ Unlike general-purpose noise that leaves visible grain on flat anime skies, wate
 pip install "bivri-dazzle @ git+https://github.com/bivri/dazzle"
 ```
 
-Requires **Python 3.11+** and **PyTorch 2.4+**. Optional extras:
+Requires **Python 3.14+** and **PyTorch 2.11+**. Optional extras:
 - `train`: offline generator training (`pip install "bivri-dazzle[train] @ git+https://github.com/bivri/dazzle"`)
 - `eval`: end-to-end LoRA & CSD evaluation harness (`pip install "bivri-dazzle[eval] @ git+https://github.com/bivri/dazzle"`)
 - `onnx`: ONNX export (`pip install "bivri-dazzle[onnx] @ git+https://github.com/bivri/dazzle"`)

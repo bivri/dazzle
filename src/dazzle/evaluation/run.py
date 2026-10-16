@@ -32,7 +32,7 @@ def code_version() -> str:
         sha = subprocess.run(
             ["git", "rev-parse", "HEAD"], cwd=Path(__file__).parent, capture_output=True, text=True, check=True
         ).stdout.strip()
-    except (subprocess.CalledProcessError, FileNotFoundError):
+    except subprocess.CalledProcessError, FileNotFoundError:
         sha = os.environ.get("DAZZLE_GIT_SHA", "unknown")
     return f"{dazzle.__version__}+{sha}"
 

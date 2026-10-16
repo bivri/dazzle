@@ -14,6 +14,7 @@
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Self
 
 STYLES = ("s1", "s2", "s3", "s4")
 
@@ -23,7 +24,7 @@ class Workspace:
     root: Path
 
     @classmethod
-    def from_env(cls) -> "Workspace":
+    def from_env(cls) -> Self:
         return cls(Path(os.environ.get("DAZZLE_WORKSPACE", "~/dazzle-v2")).expanduser())
 
     @property

@@ -22,8 +22,8 @@ def jpeg(quality: int = 85) -> Callable[[Image.Image], Image.Image]:
 def resize_roundtrip(scale: float = 0.5) -> Callable[[Image.Image], Image.Image]:
     def apply(im: Image.Image) -> Image.Image:
         w, h = im.size
-        small = im.resize((max(1, round(w * scale)), max(1, round(h * scale))), Image.BICUBIC)
-        return small.resize((w, h), Image.BICUBIC)
+        small = im.resize((max(1, round(w * scale)), max(1, round(h * scale))), Image.Resampling.BICUBIC)
+        return small.resize((w, h), Image.Resampling.BICUBIC)
 
     return apply
 
@@ -32,7 +32,7 @@ def vae_roundtrip(device: str = "cuda") -> Callable[[Image.Image], Image.Image]:
     """SDXL VAE encode (latent mean) and decode at native resolution (sides must be multiples of 8)."""
     from diffusers import AutoencoderKL
 
-    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float32).to(device).eval()
+    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", dtype=torch.float32).to(device).eval()
 
     @torch.inference_mode()
     def apply(im: Image.Image) -> Image.Image:

@@ -54,7 +54,7 @@ def main(argv: list[str]) -> int:
     for f in files:
         try:
             found += violations(f, Path(f).read_text(encoding="utf-8"))
-        except (UnicodeDecodeError, FileNotFoundError, IsADirectoryError):
+        except UnicodeDecodeError, FileNotFoundError, IsADirectoryError:
             continue
     print("\n".join(found))
     return 1 if found else 0
