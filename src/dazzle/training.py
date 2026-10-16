@@ -274,7 +274,7 @@ def train(cfg: TrainConfig, ws: Workspace, out: Path, device: str) -> DazzleGene
         torch.backends.cudnn.benchmark = True
     eps = levels_to_epsilon(cfg.epsilon_levels)
     gen = DazzleGenerator(base_ch=32, default_epsilon=eps).to(device)
-    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", dtype=torch.float32).to(device).eval()
+    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float32).to(device).eval()
     lp = lpips.LPIPS(net="alex", verbose=False).to(device).eval()
     vae.requires_grad_(False)
     lp.requires_grad_(False)

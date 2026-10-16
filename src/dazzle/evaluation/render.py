@@ -30,7 +30,7 @@ def render(ws: Workspace, jobs: list[tuple[Path, str, Path]]) -> None:
     import torch
     from diffusers import EulerAncestralDiscreteScheduler, StableDiffusionXLPipeline
 
-    pipe = StableDiffusionXLPipeline.from_single_file(str(ws.models / BASE_MODEL), dtype=torch.float16).to("cuda")
+    pipe = StableDiffusionXLPipeline.from_single_file(str(ws.models / BASE_MODEL), torch_dtype=torch.float16).to("cuda")
     pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(pipe.scheduler.config)
     pipe.set_progress_bar_config(disable=True)
     for i, (weights, style, out) in enumerate(jobs):

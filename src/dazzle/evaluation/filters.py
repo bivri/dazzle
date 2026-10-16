@@ -32,7 +32,7 @@ def vae_roundtrip(device: str = "cuda") -> Callable[[Image.Image], Image.Image]:
     """SDXL VAE encode (latent mean) and decode at native resolution (sides must be multiples of 8)."""
     from diffusers import AutoencoderKL
 
-    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", dtype=torch.float32).to(device).eval()
+    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float32).to(device).eval()
 
     @torch.inference_mode()
     def apply(im: Image.Image) -> Image.Image:
