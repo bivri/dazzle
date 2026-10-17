@@ -26,11 +26,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def results_table(report: dict) -> str:
     rows = ["| Training set given to the mimicry LoRA | LPIPS | E/F mean [95% CI] |", "| --- | --- | --- |"]
     for variant, ef in report.get("effect_ratio", {}).items():
-        m = ef.get("mean")
-        if m is None:
-            continue
         lp = report["quality"][variant]["lpips"]
-        rows.append(f"| {variant} | {lp:.3f} | {m[0]:+.3f} [{m[1]:+.3f}, {m[2]:+.3f}] |")
+        if (m := ef.get("mean")) is not None:
+            rows.append(f"| {variant} | {lp:.3f} | {m[0]:+.3f} [{m[1]:+.3f}, {m[2]:+.3f}] |")
+        else:
+            for style, vals in ef.items():
+                rows.append(f"| {variant} ({style}) | {lp:.3f} | {vals[0]:+.3f} [{vals[1]:+.3f}, {vals[2]:+.3f}] |")
     return "\n".join(rows)
 
 
