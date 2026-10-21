@@ -27,7 +27,8 @@ CI runs the same on every pull request. The policy gate enforces the single-head
 - Branch from `main` (`feat/`, `fix/`, `docs/`, `exp/`) and open a pull request to `main`. `main`
   accepts squash merges of pull requests whose `quality`, `test` and `build` checks pass.
 - Commit messages and pull request titles follow
-  [Conventional Commits](https://www.conventionalcommits.org/); the squash commit takes the title.
+  [Conventional Commits](https://www.conventionalcommits.org/); the squash commit takes the title,
+  and release notes are built from these titles, grouped by type.
 - A change to generator behaviour, training or evaluation states the evaluation run that supports
   it: run id and numbers from its `report.json`.
 - Experiments follow [docs/agents/experiments.md](docs/agents/experiments.md) and end with a record
@@ -37,8 +38,10 @@ CI runs the same on every pull request. The policy gate enforces the single-head
 
 ## Releases
 
-1. Bump `__version__` in `src/dazzle/__init__.py`, merge, and push tag `vX.Y.Z` on `main`.
-   CI builds the package and creates the GitHub Release.
+1. Bump `__version__` in `src/dazzle/__init__.py` in a `chore(release): vX.Y.Z` pull request,
+   merge, and push tag `vX.Y.Z` on `main`. CI builds the package and creates the GitHub Release;
+   its notes come from git-cliff ([cliff.toml](cliff.toml)) over the commits since the previous
+   tag. Preview them first with `uvx git-cliff --unreleased --tag vX.Y.Z --strip all`.
 2. On the GPU machine holding the weights, evaluate them, then publish under the same tag:
    `python scripts/publish_model.py --model-dir <dir> --report <run>/report.json --tag vX.Y.Z`.
 3. Add the printed Hub commit to the GitHub Release notes.
