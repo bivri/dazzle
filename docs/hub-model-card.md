@@ -14,6 +14,9 @@ illustration. The pattern is meant to reduce how much of the artist's style an S
 when the image is used for unauthorized style-mimicry fine-tuning. One forward pass, any resolution
 whose sides are multiples of 8 (the library pads and crops other sizes).
 
+Dazzle is developed by [Bivri (비브리)](https://bivri.app), an illustration community built on the
+AT Protocol where artists share artwork and exchange commissions.
+
 - Code: https://github.com/bivri/dazzle (tag `{version}`, built from `{code_version}`)
 - Output: `delta = epsilon * tanh(G(x))`, default bound {epsilon_levels} of 255 levels per channel
 
