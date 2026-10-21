@@ -24,8 +24,10 @@ CI runs the same on every pull request. The policy gate enforces the single-head
 
 ## Changes
 
-- Branch from `main` (`feat/`, `fix/`, `docs/`, `exp/`) and open a pull request to `main`.
-- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/).
+- Branch from `main` (`feat/`, `fix/`, `docs/`, `exp/`) and open a pull request to `main`. `main`
+  accepts squash merges of pull requests whose `quality`, `test` and `build` checks pass.
+- Commit messages and pull request titles follow
+  [Conventional Commits](https://www.conventionalcommits.org/); the squash commit takes the title.
 - A change to generator behaviour, training or evaluation states the evaluation run that supports
   it: run id and numbers from its `report.json`.
 - Experiments follow [docs/agents/experiments.md](docs/agents/experiments.md) and end with a record

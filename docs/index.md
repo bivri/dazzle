@@ -6,6 +6,7 @@
 - [evaluation.md](evaluation.md): how protection is measured (E/F, filters, recipe, limits).
 - [hub-model-card.md](hub-model-card.md): template for the Hub model card.
 - [CONTEXT.md](../CONTEXT.md): domain language.
+- [SECURITY.md](../SECURITY.md): how to report a vulnerability, and what counts as one.
 
 ## Decisions
 
